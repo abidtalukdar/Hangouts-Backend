@@ -4,6 +4,7 @@ class CreateMeetups < ActiveRecord::Migration[6.0]
       t.string :location
       t.date :date
       t.time :time
+      t.string :image
 
       t.timestamps
     end

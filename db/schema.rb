@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_164359) do
     t.string "location"
     t.date "date"
     t.time "time"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,7 +41,11 @@ ActiveRecord::Schema.define(version: 2020_05_01_164359) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "password_digest"
+    t.string "image"
     t.string "current_address"
     t.string "default_address"
     t.boolean "default_location_preference"
