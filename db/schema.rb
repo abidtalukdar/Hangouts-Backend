@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_164359) do
 
   create_table "meetups", force: :cascade do |t|
     t.string "location"
+    t.string "location_name"
     t.date "date"
     t.time "time"
     t.string "image"
