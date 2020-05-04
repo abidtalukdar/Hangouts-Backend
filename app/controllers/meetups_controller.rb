@@ -1,9 +1,11 @@
 class MeetupsController < ApplicationController
 
   def index
-    meetups = Meetup.all
+    user = User.find(1)
+    meetups = user.meetups
     render json: meetups
   end
+
 
   def show
     meetup = Meetup.find(params[:id])
