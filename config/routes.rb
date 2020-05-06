@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :meetups
 
   get '/friends/:id', to: 'users#friends'
+  get '/search/', to: 'yelp#search'
+  get '/meetupsearch/', to: 'yelp#yelpSearch'
+
+
 
   post "/register", to: "users#create"
   post "/login", to: "auth#login"
