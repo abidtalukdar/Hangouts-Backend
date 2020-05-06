@@ -5,7 +5,7 @@ class CreateMeetups < ActiveRecord::Migration[6.0]
       t.string :location_address
       t.string :display_phone
       t.date :date
-      t.time :time
+      t.string :time
       t.string :image
       t.integer :latitude
       t.integer :longitude

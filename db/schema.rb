@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_164359) do
     t.string "location_address"
     t.string "display_phone"
     t.date "date"
-    t.time "time"
+    t.string "time"
     t.string "image"
     t.integer "latitude"
     t.integer "longitude"
