@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get '/meetupsearch/', to: 'yelp#yelpSearch'
 
 
-
   post "/register", to: "users#create"
   post "/login", to: "auth#login"
   post "/logout", to: "auth#logout"
