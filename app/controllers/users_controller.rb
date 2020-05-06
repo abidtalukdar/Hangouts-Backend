@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+  def create
+    user = User.create(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], image: nil, current_address: nil, default_address: nil, default_location_preference: false)
+    session[:user_id] = user.id
+    render json: user
+  end
+
   def index
     users = User.all
     render json: users
@@ -21,12 +27,6 @@ class UsersController < ApplicationController
     friends = user.friendees
     render json: friends
   end 
-
-  def create
-    user = User.create(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], image: nil, current_address: nil, default_address: nil, default_location_preference: false)
-    session[:user_id] = user.id
-    render json: user
-  end
 
 end
 
