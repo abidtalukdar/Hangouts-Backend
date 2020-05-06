@@ -5,6 +5,4 @@ class MembershipsController < ApplicationController
     render json: memberships
   end
 
-
- 
 end

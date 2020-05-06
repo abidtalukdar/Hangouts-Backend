@@ -20,11 +20,14 @@ Friendship.create(friend_id: stanley.id, friendee_id: eric.id)
 
 test = Date.new(2020,5,15)
 
-Meetup.create(location: '16 West 22nd Street b/w 5th &, 6th Ave, 10010',
+Meetup.create(location_address: '16 West 22nd Street b/w 5th &, 6th Ave, 10010',
               location_name: 'Cote',
+              display_phone: "(646)234-1214",
               date: test,
               time: Time.now,
-              image: "https://cdn.cnn.com/cnnnext/dam/assets/180827153546-cote-nyc-korean-steakhouse-13.jpg"
+              image: "https://cdn.cnn.com/cnnnext/dam/assets/180827153546-cote-nyc-korean-steakhouse-13.jpg",
+              latitude: nil,
+              longitude: nil
             )
 
 Membership.create(user_id: eric.id, meetup_id: 1)

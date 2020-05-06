@@ -23,11 +23,14 @@ ActiveRecord::Schema.define(version: 2020_05_01_164359) do
   end
 
   create_table "meetups", force: :cascade do |t|
-    t.string "location"
     t.string "location_name"
+    t.string "location_address"
+    t.string "display_phone"
     t.date "date"
     t.time "time"
     t.string "image"
+    t.integer "latitude"
+    t.integer "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
