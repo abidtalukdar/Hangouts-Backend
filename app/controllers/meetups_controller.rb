@@ -1,7 +1,7 @@
 class MeetupsController < ApplicationController
 
   def index
-    user = User.find(1)
+    user = User.find(3)
     meetups = user.meetups
     render json: meetups
   end
@@ -13,8 +13,8 @@ class MeetupsController < ApplicationController
 
   def create
     byebug
-    location_address = params[:restaurantSelected][:location][:display_address].join(", ")
-    meetup = Meetup.create(location_address: location_address, location_name: params[:restaurantSelected][:name], date: params[:dateSelected], time: params[:timeSelected], image: params[:restaurantSelected][:image_url], display_phone: params[:restaurantSelected][:display_phone], latitude: params[:restaurantSelected][:coordinates][:latitude], longitude: params[:restaurantSelected][:coordinates][:longitude])
+    location_address = params[:restaurantSelected][0][:location][:display_address].join(", ")
+    meetup = Meetup.create(location_address: params[:restaurantSelected][0][:location][:display_address].join(", "), location_name: params[:restaurantSelected][0][:name], date: params[:dateSelected], time: params[:timeSelected], image: params[:restaurantSelected][0][:image_url], display_phone: params[:restaurantSelected][0][:display_phone], latitude: params[:restaurantSelected][0][:coordinates][:latitude], longitude: params[:restaurantSelected][0][:coordinates][:longitude])
     byebug
     Membership.create(meetup_id: meetup.id, user_id: params[:user])
 
