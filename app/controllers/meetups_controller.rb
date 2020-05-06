@@ -13,7 +13,28 @@ class MeetupsController < ApplicationController
   end
 
   def create
-    meetup = Meetup.create(location: params[:location], date: params[:date], time: params[:time])
+    byebug
+
+    meetup = Meetup.create(location: params[:restaurantSelected], date: params[:dateSelected], time: params[:time])
+
+    Membership.create(meetup_id: meetup.id, user_id: params[:user])
+
+    friends = params[:friendsInvited]
+  
+    friends.each do |friend|
+      friendee = User.find(friend)
+      Membership.create(meetup_id: meetup.id, user_id: friendee.id)
+    end 
+
+
+
+    byebug
+  
+    
+
     render json: meetup
   end
+
+
+
 end
