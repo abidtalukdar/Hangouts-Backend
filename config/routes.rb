@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   resources :memberships
   resources :users
   resources :meetups
+  resources :friendships
 
   get '/friends/:id', to: 'users#friends'
+  get '/notfriends/:id', to: 'users#notfriends'
   get '/search/', to: 'yelp#search'
   get '/meetupsearch/', to: 'yelp#yelpSearch'
 
