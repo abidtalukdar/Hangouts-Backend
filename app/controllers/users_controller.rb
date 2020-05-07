@@ -24,12 +24,12 @@ class UsersController < ApplicationController
 
   def friendship
     user = User.find(1)
-    notfriends = User.all.select {|people| !user.friendees.include?(people)&& people.email != user.email}
+    notfriends = User.all.select {|people| !user.friends.include?(people)&& people.email != user.email}
   end 
 
   def friends
     user = User.find(params[:id])
-    friends = user.friendees
+    friends = user.friends
     render json: friends
   end 
 
