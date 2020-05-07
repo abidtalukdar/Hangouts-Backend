@@ -24,7 +24,7 @@ Meetup.create(location_address: '16 West 22nd Street b/w 5th &, 6th Ave, 10010',
               location_name: 'Cote',
               display_phone: "(646)234-1214",
               date: test,
-              time: Time.now,
+              time: "04:02 AM",
               image: "https://cdn.cnn.com/cnnnext/dam/assets/180827153546-cote-nyc-korean-steakhouse-13.jpg",
               latitude: nil,
               longitude: nil
