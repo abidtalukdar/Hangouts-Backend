@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
 
   def create
-    user = User.create(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], image: nil, current_address: nil, default_address: nil, default_location_preference: false)
-    session[:user_id] = user.id
-    render json: user
+    user = User.where('lower(email) = ?', params[:email].downcase).first
+    if user 
+      render json: { error:"An account with this email already exists." } # add status code
+    else
+      user = User.create(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password], image: nil, current_address: nil, default_address: nil, default_location_preference: false)
+      session[:user_id] = user.id
+      render json: user
+    end
   end
 
   def index
