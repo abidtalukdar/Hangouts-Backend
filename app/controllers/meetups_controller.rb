@@ -7,7 +7,7 @@ class MeetupsController < ApplicationController
   end
 
   def show
-    meetup = Meetup.find(params[:id])
+    meetup = User.find(params[:id]).meetups
     render json: meetup
   end
 
@@ -15,14 +15,18 @@ class MeetupsController < ApplicationController
     location_address = params[:restaurantSelected][0][:location][:display_address].join(", ")
     meetup = Meetup.create(location_address: params[:restaurantSelected][0][:location][:display_address].join(", "), location_name: params[:restaurantSelected][0][:name], date: params[:dateSelected], time: params[:timeSelected], image: params[:restaurantSelected][0][:image_url], display_phone: params[:restaurantSelected][0][:display_phone], latitude: params[:restaurantSelected][0][:coordinates][:latitude], longitude: params[:restaurantSelected][0][:coordinates][:longitude])
     
-    byebug
-    Membership.create(meetup_id: meetup.id, user_id: params[:user])
+    
+    Membership.create(meetup_id: meetup.id, user_id: params[:user][:id])
+    
 
     friends = params[:friendsInvited]
+    
 
     friends.each do |friend|
+      
       friend_id = friend[:id]
       friendee = User.find(friend[:id])
+      
       Membership.create(meetup_id: meetup.id, user_id: friendee.id)
     end
 
