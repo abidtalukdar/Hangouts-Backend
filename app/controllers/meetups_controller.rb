@@ -13,15 +13,11 @@ class MeetupsController < ApplicationController
 
   def create
     location_address = params[:restaurantSelected][0][:location][:display_address].join(", ")
-    meetup = Meetup.create(location_address: params[:restaurantSelected][0][:location][:display_address].join(", "), location_name: params[:restaurantSelected][0][:name], date: params[:dateSelected], time: params[:timeSelected], image: params[:restaurantSelected][0][:image_url], display_phone: params[:restaurantSelected][0][:display_phone], latitude: params[:restaurantSelected][0][:coordinates][:latitude], longitude: params[:restaurantSelected][0][:coordinates][:longitude])
-    
+    meetup = Meetup.create(location_address: params[:restaurantSelected][0][:location][:display_address].join(", "), location_name: params[:restaurantSelected][0][:name], date: params[:dateSelected], time: params[:timeSelected], image: params[:restaurantSelected][0][:image_url], display_phone: params[:restaurantSelected][0][:display_phone], latitude: params[:restaurantSelected][0][:coordinates][:latitude], longitude: params[:restaurantSelected][0][:coordinates][:longitude])    
     
     Membership.create(meetup_id: meetup.id, user_id: params[:user][:id])
     
-
-    friends = params[:friendsInvited]
-    
-
+    friends = params[:friendsInvited]    
     friends.each do |friend|
       
       friend_id = friend[:id]
