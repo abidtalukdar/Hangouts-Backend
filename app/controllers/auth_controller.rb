@@ -17,5 +17,10 @@ class AuthController < ApplicationController
     render json: @current_user
   end
 
+  def logout
+    reset_session
+    render json: { message: "Logged out" }
+  end
+
 
 end
