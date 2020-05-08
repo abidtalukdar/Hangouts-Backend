@@ -33,6 +33,21 @@ class UsersController < ApplicationController
     render json: friends
   end 
 
+
+  def update
+    user = User.find(params[:id])
+    lat = params[:currentLocation][0]
+    lng = params[:currentLocation][1]
+    string = "#{lat} #{lng}"
+
+    user.update(current_address: string)
+    # byebug
+    render json: "hi"
+  end 
+
+
+
+
 end
 
 
